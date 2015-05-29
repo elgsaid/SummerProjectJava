@@ -4,8 +4,9 @@ public class BlackJack {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		BlackjackGUI gui = new BlackjackGUI();
-		gui.display();
+		// Below code commented as BlackjackGUI class is removed
+		//BlackjackGUI gui = new BlackjackGUI();
+		//gui.display();
 		
 	}
 
