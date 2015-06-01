@@ -1,5 +1,6 @@
 package com.java.blackjack;
 
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,6 +11,8 @@ public class Player {
 	private ArrayList<Card> hand;
 	
 	private static int numOfCards=0;
+	private int playerMoney;
+	
 	
 	// this to get the current state of the player
  
@@ -18,6 +21,7 @@ public class Player {
 	public Player(String name)
 	{
 		this.name = name;
+		this.playerMoney=200;
 		this.emptyHand();
 		hand = new ArrayList<Card>();
 	}
@@ -27,15 +31,25 @@ public class Player {
 	{
 		return this.name;
 	}
+	
+	public int getPlayerMoney() {
+		return playerMoney;
+	}
+
+	public void setPlayerMoney(int playerMoney) {
+		this.playerMoney = playerMoney;
+	}
 	/*
 	 * This method is used when we start with new game we required to 
 	 * empty players hand
 	 */
 	public void emptyHand()
 	{
-		for(int i=0;i<10;i++)
+		for(int i=0;i<10;i++){
 			hand=null;
-		
+			hand = new ArrayList<Card>();
+		}
+		//this(this.name);
 		this.numOfCards=0;
 	}
 	
@@ -153,5 +167,6 @@ public class Player {
 
 		return playerDone;	
 	}
+
 }
 
