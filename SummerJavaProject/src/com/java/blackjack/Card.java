@@ -1,5 +1,6 @@
 package com.java.blackjack;
 
+
 import javax.swing.ImageIcon;
 
 /* An implementation of Card type
@@ -29,7 +30,7 @@ public class Card {
 	
 	public int getCardValue()
 	{
-		return cardValue;
+		return this.cardValue;
 	}
 	
   
@@ -57,10 +58,17 @@ public class Card {
 	   return null;
    }
    
-   public ImageIcon getImage(){
+   public ImageIcon getImage(boolean getblankImg){
 	   String workingDir = System.getProperty("user.dir");
 	   
-	   ImageIcon image1 = new ImageIcon(workingDir+"\\images\\"+this.getCardValue()+this.suit.toString().toCharArray()[0]+".png");
-	   return image1;
+	   if(!getblankImg){
+		   ImageIcon image1 = new ImageIcon(workingDir+"\\images\\"+this.getCardValue()+this.suit.toString().toCharArray()[0]+".png");
+		   return image1;
+	   }
+	   else
+	   {
+		   ImageIcon image1 = new ImageIcon(workingDir+"\\images\\b1fv.png");
+		   return image1;
+	   }
    }
 }
