@@ -1,5 +1,7 @@
 package com.java.poker;
 
+import javax.swing.ImageIcon;
+
 /* An implementation of Card type
  * @author: Swapnil Aher
  * @since: 3/15/2015
@@ -64,5 +66,19 @@ public class Card implements Comparable<Card> {
 		else
 			return -1;
 	}
+   
+   public ImageIcon getImage(boolean getblankImg){
+	   String workingDir = System.getProperty("user.dir");
+	   
+	   if(!getblankImg){
+		   ImageIcon image1 = new ImageIcon(workingDir+"\\images\\"+this.getCardValue()+this.suit.toString().toCharArray()[0]+".png");
+		   return image1;
+	   }
+	   else
+	   {
+		   ImageIcon image1 = new ImageIcon(workingDir+"\\images\\b1fv.png");
+		   return image1;
+	   }
+   }
    
 }
