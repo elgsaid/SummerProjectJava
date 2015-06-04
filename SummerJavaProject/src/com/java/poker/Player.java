@@ -1,9 +1,7 @@
 package com.java.poker;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Scanner;
 
 public class Player {
 
@@ -34,13 +32,19 @@ public class Player {
 	 * players hand
 	 * */
 
-	private void emptyHand() {
+	public void emptyHand() {
 
-		if (hand != null)
+		if (hand != null){
 			hand.removeAll(hand);
-
-		if (evaluatedHand != null)
+			hand = new ArrayList<Card>();
+			
+		}
+			
+		if (evaluatedHand != null){
 			evaluatedHand.removeAll(evaluatedHand);
+			evaluatedHand = new ArrayList<Card>();
+		}
+			
 
 		this.numOfCards = 0;
 	}
@@ -87,7 +91,11 @@ public class Player {
 
 		return sumOfHand;
 	}
-
+	
+	public ArrayList<Card> getCardsInHand(){
+		return this.hand;
+	}
+	
 	public ArrayList<Card> getEvaluatedHand() {
 		return this.evaluatedHand;
 	}
