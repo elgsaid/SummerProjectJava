@@ -12,6 +12,13 @@ public class Player {
 	private static int numOfCards = 0;
 	private int pairValue=0;
 	
+	private int betMoney=0;
+	private int raiseMoney=0;
+	private int totalBetAmount=0;
+	private int playerMoney=0;
+	private pokerGameState previousState;
+	
+	
 	private int[][] combinationsForBoardCards = { { 0, 1, 2 }, { 0, 1, 3 },
 			{ 0, 1, 4 }, { 0, 2, 4 }, { 0, 2, 4 }, { 0, 3, 4 }, { 1, 2, 3 },
 			{ 1, 2, 4 }, { 1, 3, 4 }, { 2, 3, 4 } };
@@ -21,11 +28,52 @@ public class Player {
 		this.emptyHand();
 		hand = new ArrayList<Card>();
 		evaluatedHand = new ArrayList<Card>();
+		setPreviousState(null);
 	}
 
 	// Added this function
 	public String getName() {
 		return this.name;
+	}
+	
+	public int getBetMoney() {
+		return betMoney;
+	}
+
+	public void setBetMoney(int betMoney) {
+		this.betMoney = betMoney;
+	}
+
+	public int getRaiseMoney() {
+		return raiseMoney;
+	}
+
+	public void setRaiseMoney(int raiseMoney) {
+		this.raiseMoney = raiseMoney;
+	}
+
+	public int getTotalBetAmount() {
+		return totalBetAmount;
+	}
+
+	public void setTotalBetAmount(int totalBetAmount) {
+		this.totalBetAmount = totalBetAmount;
+	}
+	
+	public int getPlayerMoney() {
+		return playerMoney;
+	}
+
+	public void setPlayerMoney(int playerMoney) {
+		this.playerMoney = playerMoney;
+	}
+	
+	public pokerGameState getPreviousState() {
+		return previousState;
+	}
+
+	public void setPreviousState(pokerGameState previousState) {
+		this.previousState = previousState;
 	}
 	
 	/* This method is used when we start with new game we required to empty
@@ -333,5 +381,7 @@ public class Player {
 		}
 		return highCard;
 	}
+
+	
 
 }
