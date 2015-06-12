@@ -2,6 +2,8 @@ package com.java.slotmachine;
 
 
 import com.java.blackjack.*;
+import com.java.casinoserver.Client;
+import com.java.casinoserver.LoginDetails;
 
 import java.awt.EventQueue;
 
@@ -19,6 +21,7 @@ import javax.swing.JLabel;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 
 public class SlotMachine {
@@ -72,6 +75,13 @@ public class SlotMachine {
 			public void windowClosing(WindowEvent e) {
 				//JOptionPane.showMessageDialog(null, "window closeing");
 				//store player score into database while closing it.
+				try {
+					LoginDetails.UserBalance = String.valueOf(player.getPlayerMoney());
+					Client.UpdateUser();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		frmSlotMachine.setResizable(false);
@@ -120,9 +130,9 @@ public class SlotMachine {
 		lblCard2.setIcon(pCardImg2);
 		lblCard3.setIcon(pCardImg3);
 		
+		player = new Player(LoginDetails.UserName);
+		player.setPlayerMoney(Integer.parseInt(LoginDetails.UserBalance));
 		
-		player = new Player("Swapnil");
-		player.setPlayerMoney(200);
 		lblUserName.setText("User Name: "+player.getName());
 		lblUserPoints.setText("User Points: " + player.getPlayerMoney());
 		
