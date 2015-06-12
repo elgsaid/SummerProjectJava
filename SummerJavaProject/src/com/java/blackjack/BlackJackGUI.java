@@ -22,6 +22,11 @@ import javax.swing.border.LineBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.Iterator;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
+
+import com.java.casinoserver.*;
 
 public class BlackJackGUI {
 
@@ -81,8 +86,20 @@ public class BlackJackGUI {
 		// Variables for Game
 
 		frame = new JFrame("BlackJack");
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				try {
+					LoginDetails.UserBalance = String.valueOf(player.getPlayerMoney());
+					Client.UpdateUser();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		frame.setBackground(new Color(192, 192, 192));
-		frame.setBounds(100, 100, 726, 516);
+		frame.setBounds(100, 100, 778, 516);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
@@ -144,11 +161,11 @@ public class BlackJackGUI {
 		panel_2.setLayout(null);
 
 		panelDealer = new JPanel();
-		panelDealer.setBounds(31, 26, 432, 109);
+		panelDealer.setBounds(31, 26, 669, 109);
 		panel_2.add(panelDealer);
 
 		panelPlayer = new JPanel();
-		panelPlayer.setBounds(31, 226, 432, 117);
+		panelPlayer.setBounds(31, 226, 669, 109);
 		panel_2.add(panelPlayer);
 
 		lblPlayerScore = new JLabel("Player:");
@@ -163,7 +180,8 @@ public class BlackJackGUI {
 
 		// / Create Players
 		dealer = new Player("Dealer");
-		player = new Player("Swapnil");
+		player = new Player(LoginDetails.UserName);
+		player.setPlayerMoney(Integer.parseInt(LoginDetails.UserBalance));
 		
 
 		lblPlayer.setText(player.getName());
@@ -210,7 +228,6 @@ public class BlackJackGUI {
 			dealer.addCardToHand(objDeck.drawNextCard());
 			player.addCardToHand(objDeck.drawNextCard());
 
-			// Show them on the JPanel
 
 			// Get Dealer Card Images
 			ImageIcon dCardImg1 = dealer.getCardsInHand().get(0)
@@ -301,7 +318,6 @@ public class BlackJackGUI {
 
 			panelDealer.removeAll();
 
-			// iterate through cards and re-display
 			Card dhitcard = null;
 			Iterator<Card> scan = (dealer.getCardsInHand()).iterator();
 			JLabel dealercardhit =null;
