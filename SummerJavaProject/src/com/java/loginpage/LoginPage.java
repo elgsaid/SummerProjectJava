@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import com.java.blackjack.BlackJackGUI;
+import com.java.poker.PokerGUI;
 import com.java.slotmachine.SlotMachine;
 
 import java.awt.event.ActionListener;
@@ -98,19 +99,32 @@ public class LoginPage {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
+
 					BlackJackGUI.main(null);
 				}
 
-				if (rdbtnSlotMachine.isSelected() == true) {
-					
+				if (rdbtnPoker.isSelected() == true) {
+
 					try {
 						Client.SelectOrInsertUser(textUserName.getText());
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
+
+					PokerGUI.main(null);
+
+				}
+				
+				if (rdbtnSlotMachine.isSelected() == true) {
+
+					try {
+						Client.SelectOrInsertUser(textUserName.getText());
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
 					SlotMachine.main(null);
 
 				}
