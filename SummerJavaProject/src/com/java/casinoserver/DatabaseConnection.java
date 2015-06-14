@@ -1,6 +1,14 @@
 package com.java.casinoserver;
 import java.sql.*;
-
+/*
+ * @Author: Swapnil Aher
+ * 
+ * This is the database class where we are performing 
+ * 1) Update data to database
+ * 2) Insert user data into database
+ * 
+ * It also contains a driver program to check connection and check the above mentioned operation
+ */
 public class DatabaseConnection {
 	public Connection sqliteConn = null;
 	
