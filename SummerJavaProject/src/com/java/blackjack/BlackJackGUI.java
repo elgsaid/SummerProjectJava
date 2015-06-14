@@ -334,7 +334,7 @@ public class BlackJackGUI {
 					&& player.getHandSum() <= 21 || dealer.getHandSum() > 21) {
 				// System.out.println("\n Player wins!! Hurray !!");
 				enableDisableButton(GameState.NewGame);
-				lblGameStatus.setText("Game Status: Player wins!! Hurray !!");
+				lblGameStatus.setText("Game Status: "+player.getName()+" wins!! Hurray !!");
 				mCalculatePlayerAmount(PlayerState.Win);
 				lblMoney.setText("Money: "+ player.getPlayerMoney());
 				
@@ -385,7 +385,12 @@ public class BlackJackGUI {
 	{
 		if(ps == PlayerState.Win)
 		{
-			player.setPlayerMoney(player.getPlayerMoney() + betAmount);
+			if(player.getHandSum()==21){
+				player.setPlayerMoney(player.getPlayerMoney() + betAmount + 2 * betAmount);
+			}else {
+				player.setPlayerMoney(player.getPlayerMoney() + betAmount*2);	
+			}
+			
 		}else if(ps == PlayerState.Loose || ps == PlayerState.Busted){
 			player.setPlayerMoney(player.getPlayerMoney() - betAmount);
 		}
