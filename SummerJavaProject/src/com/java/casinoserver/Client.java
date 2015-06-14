@@ -27,8 +27,7 @@ public class Client {
 			out.flush();
 
 			serverInput = new ObjectInputStream(s.getInputStream());
-			ArrayList<String> receiveddata = ((ArrayList<String>) serverInput
-					.readObject());
+			ArrayList<String> receiveddata = ((ArrayList<String>) serverInput.readObject());
 
 			// assign login user details to the LoginDetails class
 			LoginDetails.UserName = receiveddata.get(0);
@@ -46,7 +45,7 @@ public class Client {
 			e.printStackTrace();
 		} finally {
 			out.close();
-			//serverInput.close();
+			serverInput.close();
 		}
 	}
 

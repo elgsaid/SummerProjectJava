@@ -26,14 +26,8 @@ public class TestServer {
 			while (true) {
 				soc = localServer.accept();
 				try {
-
-					/*
-					 * PrintWriter out = new
-					 * PrintWriter(socket.getOutputStream(), true);
-					 * out.println(new Date().toString());
-					 */
 					
-						System.out.println("Server side code execution started...");
+						System.out.println("Server started...");
 						serverInputStream = new ObjectInputStream(
 								soc.getInputStream());
 						clientOutputStream = new ObjectOutputStream(
@@ -45,7 +39,7 @@ public class TestServer {
 
 						System.out.println("Perform ..." + Userdata.get(0));
 
-						// Update Operation on Database is performed if
+						// Update Operation on Database is performed 
 						if (Userdata.get(0).equalsIgnoreCase("Update")) {
 
 							Connection cn = null;
