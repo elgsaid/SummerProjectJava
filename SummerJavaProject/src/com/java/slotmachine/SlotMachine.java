@@ -1,6 +1,11 @@
 package com.java.slotmachine;
 
-
+/*
+ * Author: Swapnil Aher
+ * we have to click on the spin button to win
+ * we can get either 2 same cards or 3 same cards (Jackpot)
+ * if we get 3 different cards we will lose
+ */
 import com.java.blackjack.*;
 import com.java.casinoserver.Client;
 import com.java.casinoserver.LoginDetails;
