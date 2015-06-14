@@ -1,5 +1,7 @@
 package com.java.casinoserver;
-
+/*@Author: Swapnil Aher
+ * This is server where we are managing the User information with CASINO database
+ */
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

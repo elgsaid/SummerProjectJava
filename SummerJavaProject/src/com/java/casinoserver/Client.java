@@ -1,5 +1,10 @@
 package com.java.casinoserver;
 
+/*@author: Swapnil Aher
+ * This is a test client program which will check data base connection 
+ * and test the 2 operations Insert and update
+ * prerequisite server should be in running state
+ */
 import java.net.*;
 import java.io.*;
 import java.util.*;
