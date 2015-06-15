@@ -1,7 +1,7 @@
 Steps to run the project
 
 1) Download the project and open the project in eclipse
-2) Add jar files from resource folder to reference library in project for Sqlite database
+2) Add all jar files from resource folder to reference library in project for Sqlite database
 3) GOTO com.java.casinoserver package and start the TestServer.java file. This will start the server
 4) After this goto com.java.loginpage and run the LoginPage.java file 
 5) Enter your name for testing purpose I have created test user "Swapnil" and select the game and click on start game
