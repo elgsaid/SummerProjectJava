@@ -127,46 +127,6 @@ public class Player {
 		}
 	}
 	
-	public boolean isDonePlaying(Game game)
-	{
-		boolean playerDone = false;
-		
-		Scanner reader = new Scanner(System.in);
-		
-		//while (playerDone == false) {
-
-			if (playerDone == false) {
-				System.out.println(this.name+" Do you want select NEXT CARD or Do you want to STAY ? (Enter N or S): ");
-				playersCurrentState = reader.next().charAt(0);
-
-				// If player selects NEXT CARD then add next card to hand of
-				// player
-				// check for busted
-				if (playersCurrentState == 'N' || playersCurrentState == 'n') {
-
-					// this function returns true when card sum is < 21
-					if (this.addCardToHand(game.objDeck.drawNextCard())) {
-						playerDone = false;
-						System.out.print (this.name +"--Printing cards of player...\n");
-						this.printCardsInHand(false);
-					} else {
-						// player is busted
-						System.out.println(this.name + " Player is busted .. Dealer wins...");
-						playerDone = true;
-						//System.exit(1);
-					}
-				} else if (playersCurrentState == 'S' || playersCurrentState == 's') {
-					// player is done over here
-					playerDone = true;
-				}
-				
-				
-			//}
-
-		}
-
-		return playerDone;	
-	}
 
 }
 
