@@ -199,7 +199,7 @@ public class BlackJackGUI {
 		
 		enableDisableButton(GameState.NewGame);
 		lblMoney.setText("Money: "+player.getPlayerMoney());
-		lblTotal.setText("Total: ");
+		//lblTotal.setText("Total: ");
 		lblBet.setText("Bet: "+betAmount);
 	}
 
@@ -226,6 +226,8 @@ public class BlackJackGUI {
 			player.emptyHand();
 			
 			// Deal the First Card
+			
+			
 			dealer.addCardToHand(objDeck.drawNextCard());
 			player.addCardToHand(objDeck.drawNextCard());
 
@@ -286,7 +288,7 @@ public class BlackJackGUI {
 
 			if (player.getHandSum() > 21) {
 				enableDisableButton(GameState.NewGame);	
-				lblGameStatus.setText("Game Status: Player is Busted");	
+				lblGameStatus.setText("Game Status: "+player.getName()+" is Busted");	
 				mCalculatePlayerAmount(PlayerState.Busted);
 				lblMoney.setText("Money: "+ player.getPlayerMoney());
 			}
