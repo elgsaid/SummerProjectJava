@@ -64,7 +64,7 @@ public class LoginPage {
 		rdbtnPoker.setBounds(141, 87, 109, 23);
 		frmLoginPage.getContentPane().add(rdbtnPoker);
 
-		final JRadioButton rdbtnSlotMachine = new JRadioButton("Solt Machine");
+		final JRadioButton rdbtnSlotMachine = new JRadioButton("Slot Machine");
 		rdbtnSlotMachine.setBounds(141, 112, 109, 23);
 		frmLoginPage.getContentPane().add(rdbtnSlotMachine);
 
