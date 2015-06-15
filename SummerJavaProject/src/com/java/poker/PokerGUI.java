@@ -301,8 +301,7 @@ public class PokerGUI {
 		//Set initial amount for players
 		// This amount will come from database
 		dealer.setPlayerMoney(200);
-		//player.setPlayerMoney(Integer.parseInt(LoginDetails.UserBalance));
-		player.setPlayerMoney(850);
+		player.setPlayerMoney(Integer.parseInt(LoginDetails.UserBalance));
 		
 		lblDealerBalance.setText(dealer.getName()+" Balance :" +dealer.getPlayerMoney());
 		lblUserBalance.setText(player.getName()+ " Balance :" +player.getPlayerMoney());
