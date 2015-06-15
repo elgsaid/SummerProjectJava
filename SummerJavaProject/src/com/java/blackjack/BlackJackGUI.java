@@ -323,15 +323,12 @@ public class BlackJackGUI {
 
 			panelDealer.removeAll();
 
-			Card dhitcard = null;
-			Iterator<Card> scan = (dealer.getCardsInHand()).iterator();
 			JLabel dealercardhit =null;
-			while (scan.hasNext()) {
-				dhitcard = scan.next();
+			for(Card dhitcard: dealer.getCardsInHand()){
 				dealercardhit = new JLabel(dhitcard.getImage(false));
-				panelDealer.add(dealercardhit);
+				panelDealer.add(dealercardhit);				
 			}
-
+			
 			lblDealerScore.setText("Dealer: " + dealer.getHandSum());
 			lblPlayerScore.setText(player.getName() +" "+ player.getHandSum());
 
