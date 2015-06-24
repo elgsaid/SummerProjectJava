@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -67,12 +68,13 @@ public class TestServer implements Runnable {
 			if (Userdata.get(0).equalsIgnoreCase("Update")) {
 
 				Connection cn = null;
+				PreparedStatement ps=null;
 				try {
 					System.out.println("Upadate Started....");
 					DatabaseConnection dc = new DatabaseConnection();
 					System.out.println("Connection created....");
 					cn = dc.getDatabaseConnection("Casino");
-					dc.runUpdateSql("update User set Money ="+ Userdata.get(3).toString() + " where id ="+ Userdata.get(2).toString(), cn);
+					dc.runUpdateSql("update User set Money =? where id =?", cn,Userdata );
 					System.out.println("update statement executed");
 				} catch (Exception e) {
 					System.out.println("Upadate Exception" + e.getMessage());
@@ -91,14 +93,14 @@ public class TestServer implements Runnable {
 					System.out.println("Connection created....");
 					cn = dc.getDatabaseConnection("Casino");
 
-					ResultSet rs = dc.runSelectSql("Select * from User where Upper(Name) == '"+ Userdata.get(1).toUpperCase() + "'", cn);
+					ResultSet rs = dc.runSelectSql("Select * from User where Upper(Name) == ?",cn,Userdata);
 
 					if (!rs.isBeforeFirst()) {
 
 						System.out.println("Record set is empty");
-						dc.runUpdateSql(
-								"INSERT INTO User (Name,Money) values ('"+ Userdata.get(1).toUpperCase()+ "',200);", cn);
-						rs = dc.runSelectSql("Select * from User where Upper(Name) == '"+ Userdata.get(1).toUpperCase() + "'",cn);
+						dc.runInsertSql("INSERT INTO User (Name,Money) values (?,200);", cn,Userdata);
+						
+						rs = dc.runSelectSql("Select * from User where Upper(Name) == ?",cn,Userdata);
 
 						while (rs.next()) {
 							listOutput.add(rs.getString("Name"));
